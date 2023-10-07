@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ParaBank_Test_Steps {
     ParaBank_Elements pe = new ParaBank_Elements();
-String newloanAccountNumber;
+    String newloanAccountNumber;
 
     @Given("Navigate to website")
     public void NavigateTowebsite() {
@@ -165,7 +165,7 @@ String newloanAccountNumber;
     @And("Loan Request Processed verify")
     public void loanRequestProcessedVerify(DataTable dt) {
         List<String> loanDetailList = dt.asList(String.class);
-        GWD.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        pe.myImplicitlyWait();
         pe.verifyContainsText(pe.adList.get(0), loanDetailList.get(0));
         pe.verifyContainsText(pe.adList.get(2), loanDetailList.get(1));
         pe.verifyContainsText(pe.getWebElement(loanDetailList.get(2)), "Congratulations");
@@ -174,7 +174,7 @@ String newloanAccountNumber;
 
     @And("Loan Account verification process")
     public void loanAccountVerificationProcess() {
-        GWD.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        pe.myImplicitlyWait();
         pe.verifyContainsText(pe.adList.get(0), newloanAccountNumber);
         pe.verifyContainsText(pe.adList.get(1), "LOAN");
         pe.verifyContainsText(pe.adList.get(2), "$2000.00");
@@ -185,7 +185,7 @@ String newloanAccountNumber;
     @And("Loan Request Processed verify2")
     public void loanRequestProcessedVerify2(DataTable dt) {
         List<String> loanDetailList = dt.asList(String.class);
-        GWD.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        pe.myImplicitlyWait();
         pe.verifyContainsText(pe.adList.get(0), loanDetailList.get(0));
         pe.verifyContainsText(pe.adList.get(2), loanDetailList.get(1));
         pe.verifyContainsText(pe.getWebElement(loanDetailList.get(2)), "You do not have sufficient funds for the given down payment.");

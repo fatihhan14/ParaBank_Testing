@@ -34,12 +34,12 @@ public class Parent {
     }
 
     public void selectElement(WebElement element, String value) {
-        GWD.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        myImplicitlyWait();
         new Select(element).selectByValue(value);
     }
 
     public void selectElementWithText(WebElement element, String value) {
-        GWD.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        myImplicitlyWait();
         new Select(element).selectByVisibleText(value);
     }
 
@@ -75,6 +75,11 @@ public class Parent {
         Action action = actions.moveToElement(element).build();
         action.perform();
     }
+
+    public void myImplicitlyWait(){
+        GWD.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    }
+
 
 
 }
