@@ -3,7 +3,7 @@ Feature: Updating Contact Information
   Background:
     Given Navigate to website
     When User sending the keys
-      | usernameBox | Falanca4   |
+      | usernameBox | Falanca6   |
       | passwordBox | Deneme.123 |
     Then Click on the element
       | loginBtn |
@@ -32,7 +32,7 @@ Feature: Updating Contact Information
       | loginBtn |
     And Click on the element
       | updateContactInfo |
-    And Update Contact Info and -negative- Update Contact Info verification process
+    And Update Contact Info verification process
       | falan2          |
       | filan2          |
       | 4623 Dye Street |
@@ -40,3 +40,8 @@ Feature: Updating Contact Information
       | Arizona2        |
       | AZ 852012       |
       | +1-280-733-0113 |
+
+  Scenario: Updating Contact Information (Negative)
+    When Click on the element
+      | updateContactInfo |
+    Then -negative- Update Contact Info verification process

@@ -13,7 +13,7 @@ Feature: Create a user account
       | zip             | AZ 85201        |
       | phone           | +1-480-733-0113 |
       | ssn             | 765-20-2371     |
-      | username        | Falanca4        |
+      | username        | Falanca6        |
       | password        | Deneme.123      |
       | confirmPassword | Deneme.123      |
     And Click on the element

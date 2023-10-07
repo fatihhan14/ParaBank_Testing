@@ -3,7 +3,7 @@ Feature: Account Details Access
   Background:
     Given Navigate to website
     When User sending the keys
-      | usernameBox | Falanca2    |
+      | usernameBox | Falanca6   |
       | passwordBox | Deneme.123 |
     Then Click on the element
       | loginBtn |

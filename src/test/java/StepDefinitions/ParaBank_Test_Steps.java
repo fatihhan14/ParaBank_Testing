@@ -129,13 +129,13 @@ public class ParaBank_Test_Steps {
         pe.myClick(pe.accActvList.get((pe.accActvList.size() - 3)));
         String StrTransactionID = pe.transactionID.getText();
         pe.myClick(pe.findTransactionButton);
-        pe.selectElementWithText(pe.fromAccountTransferFuns, "19782");
+        pe.selectElementWithText(pe.fromAccountTransferFuns, "13899");
         pe.mySendKeys(pe.findTransactionIdTextBox, StrTransactionID);
         pe.myClick(pe.findTransactionIDButton);
         pe.verifyContainsText(pe.accActvList.get(pe.accActvList.size() - 1), "1");
     }
 
-    @And("Update Contact Info and -negative- Update Contact Info verification process")
+    @And("Update Contact Info verification process")
     public void updateContactInfoAndNegativeUpdateContactInfoVerificationProcess(DataTable dt) {
         MyFunc.Wait(2);
         List<String> profileDetails = dt.asList(String.class);
@@ -152,14 +152,6 @@ public class ParaBank_Test_Steps {
         for (int i = 0; i < profileDetails.size(); i++) {
             Assert.assertEquals(strAttribute.get(i), profileDetails.get(i), "PROFİL BİLGİLERİ GÜNCELLENMEMİŞ!");
         }
-        pe.firstName.clear();
-        pe.lastName.clear();
-        pe.address.clear();
-        pe.myClick(pe.updateProfileButton);
-        Assert.assertTrue(pe.firstNameError.isDisplayed(), "First Name Error görünmedi");
-        Assert.assertTrue(pe.lastNameError.isDisplayed(), "Last Name Error görünmedi");
-        Assert.assertTrue(pe.addressError.isDisplayed(), "Address Name Error görünmedi");
-
     }
 
     @And("Loan Request Processed verify")
@@ -189,5 +181,17 @@ public class ParaBank_Test_Steps {
         pe.verifyContainsText(pe.adList.get(0), loanDetailList.get(0));
         pe.verifyContainsText(pe.adList.get(2), loanDetailList.get(1));
         pe.verifyContainsText(pe.getWebElement(loanDetailList.get(2)), "You do not have sufficient funds for the given down payment.");
+    }
+
+    @Then("-negative- Update Contact Info verification process")
+    public void negativeUpdateContactInfoVerificationProcess() {
+        pe.myImplicitlyWait();
+        pe.mySendKeys(pe.firstName," ");
+        pe.mySendKeys(pe.lastName," ");
+        pe.mySendKeys(pe.address," ");
+        pe.myClick(pe.updateProfileButton);
+        Assert.assertTrue(pe.firstNameError.isDisplayed(), "First Name Error görünmedi");
+        Assert.assertTrue(pe.lastNameError.isDisplayed(), "Last Name Error görünmedi");
+        Assert.assertTrue(pe.addressError.isDisplayed(), "Address Name Error görünmedi");
     }
 }
